@@ -1,71 +1,95 @@
-# Body Wash Review Analysis Project
+# 🧴 Body Wash Review Analysis Project  
 
-## Brief Description
+## 🧠 Brief Description  
 
-This project focuses on analyzing customer reviews for body wash products. It involves processing review data, performing predictive modeling to identify key factors influencing customer satisfaction, and generating insights from the analysis. The project utilizes machine learning techniques to predict factors such as fragrance, brand value, efficacy, and skin care based on review text.
+This project focuses on analyzing customer reviews for body wash products. It involves processing review data, performing predictive modeling to identify key factors influencing customer satisfaction, and generating insights from the analysis.  
 
-The analysis is conducted using Jupyter notebooks, with datasets for training and testing models. Results include predicted factors for test reviews, stored in CSV format.
+The core task is to predict *Level-1 factors* such as **Fragrance**, **Brand Value**, **Efficacy**, and **Skin Care** from review text using **Natural Language Processing (NLP)** techniques.  
 
-## Process
+The analysis is conducted using Jupyter notebooks, with datasets for training and testing models. The final results include predicted factors for the test reviews, stored in CSV format.
 
-### 1. Data Collection and Preparation
-- **Datasets**: The project uses two primary datasets:
-  - `datasets/bodywash-train.xlsx`: Training data containing body wash reviews with labeled factors.
-  - `datasets/bodywash-test.xlsx`: Test data for evaluating model predictions.
-- Data preprocessing involves cleaning review text, handling missing values, and preparing features for modeling.
+---
 
-### 2. Model Development
-- **Notebooks**:
-  - `notebook/bodyWash.ipynb`: Main notebook for data exploration, model training, and evaluation using traditional machine learning approaches.
-- Techniques may include natural language processing (NLP), classification models, and AI-driven factor prediction.
+## ⚙️ Process  
 
-### 3. Prediction and Evaluation
-- Models are trained on the training dataset to predict factors from review text.
-- Predictions are generated for the test dataset and saved to `result/bodywash-test-final.csv`.
-- Evaluation metrics assess model performance, such as accuracy, precision, and recall for each predicted factor.
+### 1️⃣ Data Collection and Preparation  
+- **Datasets**:  
+  - `datasets/bodywash-train.xlsx` → Training data containing reviews with labeled factors  
+  - `datasets/bodywash-test.xlsx` → Unlabeled test data for generating predictions  
+- Data preprocessing included text cleaning, handling missing values, and preparing structured input for inference.  
 
-### 4. Results Interpretation
-- The final results file (`result/bodywash-test-final.csv`) contains original reviews paired with predicted factors, enabling insights into common themes in body wash reviews.
+---
 
-## Data Analysis
+### 2️⃣ Model Development and Inference  
 
-### Key Insights from Reviews
-Based on the analysis of the provided data, common factors predicted in body wash reviews include:
-- **Fragrance**: Scent quality and longevity.
-- **Brand Value**: Overall brand perception and loyalty.
-- **Efficacy**: Effectiveness in cleaning and moisturizing.
-- **Skin Care**: Impact on skin health, dryness, and irritation.
-- **Cleansing**: Ability to remove dirt and residue.
-- **Price**: Value for money and affordability.
-- **Product Texture**: Lather quality and consistency.
+#### 💡 LLM Used → Groq Cloud **LLaMA 3.1 – 8B Instant**  
+This project uses the **LLaMA 3.1 – 8B Instant** model from **Groq Cloud** for factor prediction.  
+It was selected for its **speed, contextual understanding, and free-tier accessibility**.  
 
-### Example Analysis
-- Reviews often highlight positive aspects like pleasant scents and skin softness, while negative feedback focuses on dryness, strong odors, or ingredient concerns.
-- Predictive models achieve varying accuracy depending on the factor, with fragrance and efficacy being commonly well-predicted.
+**Key Features of LLaMA 3.1 Instant:**  
+- 🧩 Large Language Model trained by Meta AI and served on Groq’s ultra-low-latency hardware  
+- ⚡ Extremely fast inference (< 1 s per prompt) — ideal for batch text classification  
+- 🔁 Supports multi-label NLP tasks (identifying multiple factors from a review)  
+- 🧠 Strong semantic reasoning for consumer feedback and sentiment classification  
+- 💸 Completely free for moderate usage under Groq Cloud’s public tier  
 
-### Visualizations and Further Exploration
-- Notebooks include exploratory data analysis (EDA) with plots for factor distributions, word clouds for review themes, and model performance charts.
-- Use the notebooks to reproduce analysis or experiment with different models.
+**Notebook:**  
+- `notebook/bodyWash.ipynb` → Contains EDA, model prompt design, Groq API integration, prediction loop (with rate-limit handling), and result generation.  
 
-## Summary
+---
 
-This project demonstrates the application of data science and AI in consumer product review analysis. By predicting key factors from text, it provides valuable insights for product development, marketing, and customer satisfaction improvement in the body wash market.
+### 3️⃣ Prediction and Evaluation  
+- Model queries each review text via the Groq Cloud API and returns a comma-separated list of factors.  
+- Predictions are saved to `result/bodywash-test-final.csv`.  
+- Evaluation metrics (accuracy, precision, recall) can be computed on the training data for internal validation.  
 
-### Getting Started
-1. Clone or download the repository.
-2. Ensure Python and required libraries (e.g., pandas, scikit-learn, transformers for Gemini integration) are installed.
-3. Open the notebooks in Jupyter and run cells sequentially.
-4. Review the results in `result/bodywash-test-final.csv`.
+---
 
-### Dependencies
-- Python 3.x
-- Jupyter Notebook
-- Libraries: pandas, numpy, scikit-learn, matplotlib, seaborn (for analysis)
-- For Gemini notebook: google-generativeai or relevant API access
+### 4️⃣ Results and Insights  
 
-### Future Enhancements
-- Integrate more advanced NLP models.
-- Expand dataset for better generalization.
-- Add real-time prediction capabilities.
+The final CSV file contains each review and its predicted factors, allowing for quick analysis of themes and sentiment.  
 
-For questions or contributions, feel free to reach out.
+| Review Text | Predicted Factors |
+|--------------|------------------|
+| “Smells great and foams easily.” | Fragrance, Product Texture |
+| “Too harsh on my skin.” | Product Safety, Skin Care |
+| “Hard to find locally.” | Accessibility |
+| “A bit pricey but amazing scent.” | Price, Fragrance |
+
+---
+
+## 📊 Data Analysis and Visualization  
+
+Exploratory data analysis (EDA) in the notebook includes:  
+- Factor frequency distribution  
+- Word clouds of review terms  
+- Charts showing review lengths and factor occurrences  
+
+---
+
+## 🔍 Key Insights from Reviews  
+
+- **Fragrance** and **Efficacy** are the most common factors.  
+- **Skin Care** and **Cleansing** often appear together in positive reviews.  
+- **Price** and **Brand Value** influence customer perception strongly.  
+
+---
+
+## 🪄 Getting Started  
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Adarsh-Mishra15/MavenMagnet_round_1.git
+
+## 🧩 Dependencies  
+
+```text
+Python 3.x  
+pandas  
+numpy  
+matplotlib  
+seaborn  
+tqdm  
+requests  
+python-dotenv  
+Access to Groq Cloud API (LLaMA 3.1 Instant Model)
